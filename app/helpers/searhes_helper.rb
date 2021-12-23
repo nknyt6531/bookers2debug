@@ -1,0 +1,2 @@
+module SearhesHelper
+end
