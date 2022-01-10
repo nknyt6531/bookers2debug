@@ -21,21 +21,19 @@
           <td id='<%= @book.id %>_favorite_btn'>
             <%= render 'favorites/favorites', book: @book %>
           <td>
-          <td>コメント数：<%= render 'book_comments/comments_count', book: @book %></td>
+          <td id='comments_count'>コメント数：<%= render 'book_comments/comments_count', book: @book %></td>
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
-            <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{book.id}"%></td>
+            <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
           <% end %>
         </tr>
-          <span id='comments_table'>
-  		      <%= render 'book_comments/post_comments', book: @book, book_comments: @book_comments %>
-  		    </span>
-        <tr>
-          <td id='<%= @book.id %>_comments_area'>
-            <%= render 'book_comments/form', book: @book, book_comment_new: @book_comment_new %>
-          </td>
-        </tr>
       </table>
+      <table id='comments_table'>
+	      <%= render 'book_comments/post_comments', book: @book, book_comments: @book_comments %>
+      </table>
+      <div id='<%= @book.id %>_comments_area'>
+        <%= render 'book_comments/form', book: @book, book_comment_new: @book_comment_new %>
+      </div>
     </div>
   </div>
 </div>
